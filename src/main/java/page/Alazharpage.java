@@ -1,7 +1,12 @@
 package page;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+
 
 public class Alazharpage {
 
@@ -19,7 +24,7 @@ public class Alazharpage {
     	this.driver=driver;
     	
     }
-   
+  
    
     public void alsubject(String sub)
     {
@@ -32,9 +37,14 @@ public class Alazharpage {
     	
     }
     
-    public void alcont()
+    public void alcont() throws Exception
     {
     	driver.findElement(contact).click();
+    	String crnt=driver.getCurrentUrl();
+		URL a=new URL(crnt);
+		HttpURLConnection b=(HttpURLConnection)a.openConnection();
+		b.connect();
+		System.out.println("response code  "+b.getResponseCode());
     }
      public void alabout()
      {

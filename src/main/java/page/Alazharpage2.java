@@ -1,7 +1,13 @@
 package page;
 
+import java.io.File;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
 
 public class Alazharpage2 {
 	
@@ -27,11 +33,14 @@ public class Alazharpage2 {
     	  driver.findElement(alpg).click();
     	  driver.findElement(altravel).click();
       }
-      public void home()
+      public void home() throws Exception
       {
     	  driver.findElement(alhome).click();
-    	  
-      }
+    	  WebElement wb=driver.findElement(alhome);
+    	  File sh=wb.getScreenshotAs(OutputType.FILE);
+    	  FileHandler.copy(sh,new File("./screenshot/error.png"));
+    	 }
+      
       public void announce()
       {
     	  driver.findElement(alview).click();
